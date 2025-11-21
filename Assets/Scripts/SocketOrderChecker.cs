@@ -20,6 +20,9 @@ public class SocketOrderChecker : MonoBehaviour
     [Tooltip("Triggered when ALL sockets are filled with the correct objects in the correct order.")]
     public UnityEvent onOrderCorrect = new UnityEvent();
 
+    [Tooltip("Triggered when not all sockets are filled.")]
+    public UnityEvent onIncomplete = new UnityEvent();
+
     [Tooltip("Triggered when an object is placed or removed, and the current configuration is not correct.")]
     public UnityEvent onOrderIncorrect = new UnityEvent();
 
@@ -67,6 +70,7 @@ public class SocketOrderChecker : MonoBehaviour
         }
 
         bool isCorrect = true;
+        bool isComplete = true;
 
         for (int i = 0; i < sockets.Count; i++)
         {
@@ -77,7 +81,7 @@ public class SocketOrderChecker : MonoBehaviour
             if (!currentSocket.hasSelection)
             {
                 // If a socket is empty, the sequence is incomplete/incorrect
-                isCorrect = false;
+                isComplete = false;
                 break;
             }
 
@@ -103,7 +107,12 @@ public class SocketOrderChecker : MonoBehaviour
         }
 
         // 3. Trigger the appropriate event
-        if (isCorrect)
+        if (!isComplete)
+        {
+            Debug.Log("IncompletePuzzle");
+            onIncomplete.Invoke();
+        }
+        else if (isCorrect)
         {
             Debug.Log("Socket Sequence Correct! Activating 'onOrderCorrect' event.");
             onOrderCorrect.Invoke();
