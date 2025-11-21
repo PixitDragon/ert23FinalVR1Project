@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - cyanRuneTag
+  - limeRuneTag
+  - darkBlueRuneTag
+  - orangeRuneTag
+  - purpleRuneTag
   layers:
   - Default
   - TransparentFX

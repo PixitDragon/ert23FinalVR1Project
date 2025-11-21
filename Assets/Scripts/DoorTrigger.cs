@@ -54,6 +54,6 @@ public class DoorTrigger : MonoBehaviour
 
     void Start()
     {
-        ActivateDoorOpen();
+        ///ActivateDoorOpen();
     }
 }
