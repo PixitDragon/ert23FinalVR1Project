@@ -90,9 +90,12 @@ public class SocketOrderChecker : MonoBehaviour
             UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = currentSocket.interactablesSelected[0];
 
             // Safety check for null (though rare here, it's good practice)
-            if (interactable == null)
+           if (!currentSocket.hasSelection)
             {
-                isCorrect = false;
+                // If a socket is empty, the sequence is incomplete.
+                isComplete = false;
+                // Set isCorrect to false, as an incomplete puzzle is never a 'correct' state
+                isCorrect = false; 
                 break;
             }
 
