@@ -12,6 +12,9 @@ TagManager:
   - purpleRuneTag
   - isBug
   - bottle
+  - bug0
+  - bug1
+  - bug2
   layers:
   - Default
   - TransparentFX

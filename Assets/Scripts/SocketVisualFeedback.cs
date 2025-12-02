@@ -13,6 +13,9 @@ public class SocketVisualFeedback : MonoBehaviour
     [Tooltip("The color to apply when the socket order is incorrect.")]
     public Color incorrectColor = Color.red;
 
+    [Tooltip("The color to apply when the socket order is correct.")]
+    public Color correctColor = Color.green;
+
     private Material runtimeMaterial;
     private Color originalColor;
     private const string ColorProperty = "_Color"; // Common shader property name for color
@@ -67,6 +70,15 @@ public class SocketVisualFeedback : MonoBehaviour
         if (runtimeMaterial != null && runtimeMaterial.HasProperty(ColorProperty))
         {
             runtimeMaterial.color = originalColor;
+        }
+    }
+
+    [ContextMenu("Correct Item Color")]
+    public void SetCorrectColor()
+    {
+        if (runtimeMaterial != null && runtimeMaterial.HasProperty(ColorProperty))
+        {
+            runtimeMaterial.color = correctColor;
         }
     }
 
